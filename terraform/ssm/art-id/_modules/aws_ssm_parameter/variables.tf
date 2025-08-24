@@ -2,6 +2,10 @@ variable "ssm_parameter_name" {
   description = "Name of parameter"
 }
 
+variable "ssm_parameter_description" {
+  description = "Description of parameter"
+}
+
 variable "ssm_parameter_type" {
   description = "Type of parameter"
   default     = "SecureString"

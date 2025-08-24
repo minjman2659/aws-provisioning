@@ -1,14 +1,25 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.17.0"
+    }
+  }
+}
+
 provider "aws" {
-  region  = "ap-northeast-2" # Please use the default region ID
-  version = "~> 2.49.0"      # Please choose any version or delete this line if you want the latest version
+  region = "ap-northeast-2" # Please use the default region ID
 }
 
 # S3 bucket for backend
 resource "aws_s3_bucket" "tfstate" {
   bucket = "${var.account_id}-apnortheast2-tfstate"
+}
 
-  versioning {
-    enabled = true # Prevent from deleting tfstate file
+resource "aws_s3_bucket_versioning" "tfstate" {
+  bucket = aws_s3_bucket.tfstate.id
+  versioning_configuration {
+    status = "Enabled"
   }
 }
 

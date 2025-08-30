@@ -35,7 +35,7 @@ resource "aws_vpc_endpoint_route_table_association" "dynamodb_endpoint_routetabl
   route_table_id  = aws_route_table.private[count.index].id
 }
 
-/*
+
 # Interface Type Endpoint 
 # Security Group of VPC Endpoint (API Gateway)
 resource "aws_security_group" "apigateway_vpc_endpoint_sg" {
@@ -142,4 +142,3 @@ resource "aws_vpc_endpoint_subnet_association" "secretsmanager_endpoint" {
   subnet_id       = aws_subnet.private[count.index].id
 }
 
-*/
